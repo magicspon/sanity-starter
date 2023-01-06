@@ -1,0 +1,8 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": ["next", "@project/eslint-config"]
+}

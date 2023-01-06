@@ -1,0 +1,63 @@
+{
+  "name": "@project/ui",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "src/index.ts",
+  "files": [
+    "src/**"
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 6006 --quiet",
+    "build-storybook": "build-storybook --quiet -o ./dist",
+    "lint": "tsc --project tsconfig.json --noEmit --pretty && TIMING=1 eslint \"src/**/*.ts*\" --fix --quiet",
+    "format": "prettier '**/*' --ignore-unknown --write",
+    "typecheck": "concurrently --raw yarn:typecheck:*"
+  },
+  "jest": {
+    "preset": "@project/jest-config"
+  },
+  "devDependencies": {
+    "@project/eslint-config": "*",
+    "@project/jest-config": "*",
+    "@project/tailwind-config": "*",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
+    "@svgr/webpack": "6.5.1",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.10",
+    "html-webpack-plugin": "^5.5.0",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.1.8",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@mobily/ts-belt": "^3.13.1",
+    "@portabletext/react": "^2.0.0",
+    "@radix-ui/react-dialog": "^1.0.2",
+    "@radix-ui/react-icons": "^1.1.1",
+    "@radix-ui/react-separator": "^1.0.1",
+    "@radix-ui/react-slot": "^1.0.1",
+    "@radix-ui/react-toast": "^1.1.2",
+    "@radix-ui/react-visually-hidden": "^1.0.1",
+    "@types/nprogress": "^0.2.0",
+    "class-variance-authority": "^0.4.0",
+    "clsx": "^1.2.1",
+    "embla-carousel-react": "^7.0.5",
+    "framer-motion": "^8.1.8",
+    "next": "13.1.1",
+    "nprogress": "^0.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "usehooks-ts": "^2.9.1",
+    "zustand": "^4.2.0"
+  }
+}

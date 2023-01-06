@@ -1,0 +1,15 @@
+{
+  "packages": ["packages/**/*", "apps/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "independent",
+  "command": {
+    "version": {
+      "message": "chore: release"
+    }
+  },
+  "changelogPreset": {
+    "name": "conventionalcommits",
+    "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}"
+  }
+}

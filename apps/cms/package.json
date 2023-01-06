@@ -1,0 +1,37 @@
+{
+  "name": "@project/cms",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@project/ui": "*",
+    "@sanity/orderable-document-list": "^1.0.2",
+    "@sanity/vision": "^3.1.4",
+    "next-sanity": "^3.1.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sanity": "^3.1.4",
+    "sanity-plugin-asset-source-unsplash": "^1.0.3",
+    "sanity-plugin-markdown": "^3.0.1",
+    "styled-components": "^5.2"
+  },
+  "devDependencies": {
+    "@project/eslint-config": "*",
+    "@sanity/eslint-config-studio": "^2.0.1",
+    "eslint": "8.31.0",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4"
+  },
+  "type": "module"
+}

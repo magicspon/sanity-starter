@@ -1,0 +1,85 @@
+{
+  "name": "capstar",
+  "private": true,
+  "author": {
+    "email": "hello@spon.io",
+    "name": "Dave Stockley",
+    "url": "https://spon.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:magicspon/sanity-starter.git"
+  },
+  "license": "MIT",
+  "packageManager": "yarn@1.22.19",
+  "scripts": {
+    "dev": "turbo dev --parallel",
+    "start": "turbo run start --filter=@project/site",
+    "start:ci": "INSECURE_AUTH=true yarn run start",
+    "build": "turbo build",
+    "deploy": "turbo deploy",
+    "deploy-graphql": "turbo deploy-graphql",
+    "new:component": "hygen component with-prompt",
+    "new:page": "hygen page with-prompt",
+    "new:context": "hygen context with-prompt",
+    "new:hook": "hygen hook with-prompt",
+    "new:store": "hygen store with-prompt",
+    "db-up": "docker compose up -d",
+    "db-nuke": "docker compose down --volumes --remove-orphans",
+    "generate": "turbo generate",
+    "clean:workspaces": "turbo clean",
+    "clean": "rm -rf node_modules",
+    "test": "turbo test",
+    "lint": "turbo lint && manypkg check",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,css}\"",
+    "prepare": "husky install",
+    "storybook": "turbo run storybook --filter=@project/ui",
+    "build-storybook": "turbo run build-storybook --filter=@project/ui",
+    "cypress:open": "cypress open"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^17.4.0",
+    "@commitlint/config-conventional": "^17.4.0",
+    "@commitlint/config-lerna-scopes": "^17.4.0",
+    "@manypkg/cli": "^0.19.2",
+    "@testing-library/react-hooks": "^8.0.1",
+    "commitlint": "^17.4.0",
+    "cypress": "^12.3.0",
+    "husky": "^8.0.3",
+    "hygen": "^6.2.11",
+    "lerna": "^6.3.0",
+    "lerna-changelog": "^2.2.0",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "react-test-renderer": "^18.2.0",
+    "turbo": "^1.5.5",
+    "webpack": "^5.75.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/**/*"
+  ],
+  "engines": {
+    "node": ">=18.12.1",
+    "yarn": "^1.2"
+  },
+  "volta": {
+    "node": "18.12.1",
+    "yarn": "1.22.17"
+  },
+  "quokka": {
+    "babel": {
+      "env": "test",
+      "polyfill": false
+    },
+    "installPackageCommand": "yarn add {packageName}",
+    "env": {
+      "params": {
+        "env": "NODE_ENV=test"
+      }
+    }
+  },
+  "jest": {
+    "preset": "@project/jest-config"
+  }
+}

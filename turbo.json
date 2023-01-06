@@ -1,0 +1,54 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
+    },
+    "cypress:open": {
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "cache": false
+    },
+    "deploy": {
+      "cache": false
+    },
+    "deploy-graphql": {},
+    "lint": {
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    },
+    "storybook": {
+      "cache": false
+    },
+    "build-storybook": {
+      "outputs": ["dist/**"]
+    }
+  },
+  "globalEnv": [
+    "NODE_ENV",
+    "NEXT_PUBLIC_SANITY_PROJECT_ID",
+    "NEXT_PUBLIC_SANITY_DATASET",
+    "SANITY_STUDIO_API_PROJECT_ID",
+    "SANITY_STUDIO_API_DATASET",
+    "SANITY_API_PROJECT_ID",
+    "SANITY_API_DATASET",
+    "SANITY_API_READ_TOKEN",
+    "SANITY_API_WRITE_TOKEN",
+    "NEXT_PUBLIC_SANITY_PROJECT_TITLE",
+    "NEXT_PUBLIC_VERCEL_URL"
+  ]
+}
