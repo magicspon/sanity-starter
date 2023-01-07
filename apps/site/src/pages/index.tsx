@@ -1,32 +1,35 @@
 import * as React from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { sanityClient } from '@project/cms/lib/sanity.client'
-import { indexQuery } from '@project/cms/lib/sanity.queries'
 import { HomePage } from '~templates/HomePage'
 import dynamic from 'next/dynamic'
+import { read, IndexQueryType } from '@cms/queries/home'
 
 const HomePagePreview = dynamic(
   () => import('~templates/HomePage').then((m) => m.HomePagePreview),
   { ssr: false },
 )
 
-export default function Index(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>,
-) {
-  if (props.preview) {
-    return <HomePagePreview token={props.previewData.token} />
+export default function Index({
+  preview,
+  previewData,
+  page,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  if (preview) {
+    return <HomePagePreview token={previewData.token} />
   }
 
-  return <HomePage {...props} />
+  return <HomePage page={page} />
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
+type TPreviewData = { token: string }
+type TProps = IndexQueryType & { preview: boolean; previewData: TPreviewData }
+
+export const getServerSideProps: GetServerSideProps<TProps> = async ({
   res,
   preview = false,
   previewData = {},
 }) => {
-  const client = sanityClient()
-  const { page, site, posts } = await client.fetch(indexQuery)
+  const { page } = (await read()) as IndexQueryType
 
   res.setHeader(
     'Cache-Control',
@@ -35,12 +38,9 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      data: page,
-      posts,
+      page,
       preview,
-      previewData,
-      site,
-      theme: 'navy',
+      previewData: previewData as TPreviewData,
     },
   }
 }

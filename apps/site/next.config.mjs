@@ -4,7 +4,7 @@ const config = {
   reactStrictMode: true,
   swcMinify: true,
 
-  transpilePackages: ['@project/ui'],
+  transpilePackages: ['@project/ui', '@project/cms'],
   experimental: {
     // Enables hot-reload and easy integration for local packages
   },

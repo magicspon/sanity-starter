@@ -13,7 +13,7 @@ export const Separator = React.forwardRef<HTMLDivElement, TProps>(
         {...props}
         ref={ref}
         className={clsx(
-          'data-vertical:w-px data-vertical:h-11 data-horizontal:w-11 data-horizontal:h-px bg-mustard',
+          'data-vertical:w-px data-vertical:h-11 data-horizontal:w-11 data-horizontal:h-px',
           className,
         )}
       />

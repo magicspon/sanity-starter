@@ -30,7 +30,7 @@
 }
 
 #nprogress .bar {
-  @apply bg-mustard;
+  @apply bg-blue-800;
 
   position: fixed;
   z-index: 1031;
@@ -47,7 +47,8 @@
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px theme('colors.mustard'), 0 0 5px theme('colors.mustard');
+  box-shadow: 0 0 10px theme('colors.blue.800'),
+    0 0 5px theme('colors.blue.800');
   opacity: 1;
   transform: rotate(3deg) translate(0px, -4px);
 }
@@ -66,8 +67,8 @@
   height: 18px;
   box-sizing: border-box;
   border: solid 2px transparent;
-  border-top-color: theme('colors.mustard');
-  border-left-color: theme('colors.mustard');
+  border-top-color: theme('colors.blue.800');
+  border-left-color: theme('colors.blue.800');
   border-radius: 50%;
   animation: nprogress-spinner 400ms linear infinite;
 }
