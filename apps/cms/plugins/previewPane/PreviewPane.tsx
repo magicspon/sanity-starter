@@ -1,6 +1,6 @@
 import { Card, Text } from '@sanity/ui'
-import { resolveHref } from '@cms/utils/resolveHref'
-import { getSecret } from '@cms/plugins/productionUrl/utils'
+import { resolveHref } from '../../utils/resolveHref'
+import { getSecret } from '../../plugins/productionUrl/utils'
 import { ComponentProps, Suspense } from 'react'
 import * as React from 'react'
 import { useClient } from 'sanity'
