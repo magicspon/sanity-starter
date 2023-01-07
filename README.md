@@ -1,3 +1,6 @@
+[![Lint](https://github.com/magicspon/sanity-starter/actions/workflows/lint.yml/badge.svg)](https://github.com/magicspon/sanity-starter/actions/workflows/lint.yml)
+[![E2E tests](https://github.com/magicspon/sanity-starter/actions/workflows/e2e.yml/badge.svg)](https://github.com/magicspon/sanity-starter/actions/workflows/e2e.yml)
+
 # typesafe sanity starter
 
 This repo uses `pnpm`
