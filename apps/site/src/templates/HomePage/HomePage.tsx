@@ -7,6 +7,8 @@ export function HomePage({ page }: IndexQueryType) {
   return (
     <>
       <h1>{page.title}</h1>
+
+      <pre>{JSON.stringify(page.content)}</pre>
     </>
   )
 }

@@ -33,6 +33,10 @@ export const getServerSideProps: GetServerSideProps<
 
   const { page } = (await readPost({ slug })) as PostQueryType
 
+  if (!page) {
+    return { notFound: true }
+  }
+
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=120, stale-while-revalidate=59',

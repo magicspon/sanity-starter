@@ -25,6 +25,7 @@
     "sanity-plugin-asset-source-unsplash": "^1.0.3",
     "sanity-plugin-markdown": "^3.0.1",
     "sanity-typed-schema-builder": "^2.0.1",
+    "slugify": "^1.6.5",
     "styled-components": "^5.2"
   },
   "devDependencies": {

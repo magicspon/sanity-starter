@@ -1,4 +1,5 @@
 import { s } from 'sanity-typed-schema-builder'
+import slugify from 'slugify'
 
 export const page = s.document({
   name: 'page',
@@ -8,6 +9,16 @@ export const page = s.document({
       name: 'title',
       type: s.string(),
     },
+    {
+      name: 'slug',
+      type: s.slug({
+        options: {
+          source: 'title',
+          maxLength: 200, // will be ignored if slugify is set
+          slugify: (input) => slugify(input).slice(0, 200),
+        },
+      }),
+    },
   ],
   preview: {
     select: {
@@ -16,7 +27,6 @@ export const page = s.document({
     prepare({ title }) {
       return {
         title: title as string,
-        // title: title ?? null
       }
     },
   },

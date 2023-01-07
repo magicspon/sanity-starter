@@ -5,12 +5,13 @@ import { sanityClient } from '@cms/lib/client'
 
 export const indexQuery = groq`{
   "page": *[_type == "home"][0] {
-    title
+    title,
+    content
   },
 }`
 
 export type IndexQueryType = {
-  page: Pick<s.infer<typeof home>, 'title'>
+  page: Pick<s.infer<typeof home>, 'title' | 'content'>
 }
 
 export async function read() {
