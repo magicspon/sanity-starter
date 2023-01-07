@@ -11,11 +11,12 @@
     "url": "ssh://git@github.com:magicspon/sanity-starter.git"
   },
   "license": "MIT",
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "pnpm@7.22.0",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "turbo dev --parallel",
     "start": "turbo run start --filter=@project/site",
-    "start:ci": "INSECURE_AUTH=true yarn run start",
+    "start:ci": "INSECURE_AUTH=true pnpm start",
     "build": "turbo build",
     "deploy": "turbo deploy",
     "deploy-graphql": "turbo deploy-graphql",
@@ -32,7 +33,7 @@
     "test": "turbo test",
     "lint": "turbo lint && manypkg check",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css}\"",
-    "prepare": "husky install",
+    "prepare": "chmod +x ./node_modules/husky/lib/bin.js && husky install",
     "storybook": "turbo run storybook --filter=@project/ui",
     "build-storybook": "turbo run build-storybook --filter=@project/ui",
     "cypress:open": "cypress open"
@@ -55,24 +56,22 @@
     "turbo": "^1.5.5",
     "webpack": "^5.75.0"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/**/*"
-  ],
   "engines": {
     "node": ">=18.12.1",
-    "yarn": "^1.2"
+    "yarn": "^1.2",
+    "pnpm": "7.22.0"
   },
   "volta": {
     "node": "18.12.1",
-    "yarn": "1.22.17"
+    "yarn": "1.22.17",
+    "pnpm": "7.22.0"
   },
   "quokka": {
     "babel": {
       "env": "test",
       "polyfill": false
     },
-    "installPackageCommand": "yarn add {packageName}",
+    "installPackageCommand": "pnpm add {packageName}",
     "env": {
       "params": {
         "env": "NODE_ENV=test"
