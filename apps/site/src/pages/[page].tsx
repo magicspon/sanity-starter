@@ -1,31 +1,37 @@
 import * as React from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { HomePage } from '~templates/HomePage'
+import { Page } from '~templates/Page'
 import dynamic from 'next/dynamic'
-import { read, IndexQueryType } from '@project/cms/queries/home'
+import { read, PageQueryType } from '@project/cms/queries/page'
 import { TPageProps, TPreviewData } from '~types'
 
-const HomePagePreview = dynamic(
-  () => import('~templates/HomePage').then((m) => m.HomePagePreview),
+const PagePreview = dynamic(
+  () => import('~templates/Page').then((m) => m.PagePreview),
   { ssr: false },
 )
 
-export default function Index({
+export default function PagePage({
   preview,
   previewData,
   page,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   if (preview) {
-    return <HomePagePreview token={previewData.token} />
+    return <PagePreview token={previewData.token} />
   }
 
-  return <HomePage page={page} />
+  return <Page page={page} />
 }
 
 export const getServerSideProps: GetServerSideProps<
-  TPageProps<IndexQueryType>
-> = async ({ res, preview = false, previewData = {} }) => {
-  const { page } = (await read()) as IndexQueryType
+  TPageProps<PageQueryType>
+> = async ({ res, preview = false, previewData = {}, params }) => {
+  const slug = params?.page as string
+
+  if (!slug) {
+    return { notFound: true }
+  }
+
+  const { page } = (await read({ slug })) as PageQueryType
 
   res.setHeader(
     'Cache-Control',

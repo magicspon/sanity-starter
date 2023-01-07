@@ -7,6 +7,8 @@ export function resolveHref(
       return '/'
     case 'page':
       return slug ? `/${slug}` : undefined
+    case 'blog':
+      return slug ? `/blog/${slug}` : undefined
     default:
       console.warn('Invalid document type:', documentType)
       return undefined
