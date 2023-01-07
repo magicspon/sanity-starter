@@ -1,26 +1,44 @@
 name: Lint
-on: push
+on:
+  - push
+  - pull_request
+
 jobs:
-  test:
-    name: Lint & typecheck
+  cache-and-install:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: pnpm/action-setup@v2
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 16
 
-      # Throw an error if the yarn.lock file doesn't match the installed dependencies (rather than updating it in-place, which it does by default locally)
-      - name: Install
-        run: pnpm install --frozen-lockfile --silent
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
 
-      - name: Copy example env for app
-        run: cp .env.example apps/site/.env.local && cp .env.example apps/cms/.env
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - name: Lint
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Test
         run: pnpm lint
