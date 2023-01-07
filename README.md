@@ -1,1 +1,1 @@
-# sanity starter
+# typesafe sanity starter

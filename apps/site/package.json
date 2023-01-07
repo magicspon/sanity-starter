@@ -11,10 +11,10 @@
     "lint": "tsc --pretty --noEmit --project tsconfig.json && TIMING=1 eslint \"src/**/*.ts*\" --fix --quiet"
   },
   "dependencies": {
-    "@project/cms": "*",
-    "@project/ui": "*",
     "@next/font": "^13.1.1",
     "@portabletext/react": "^2.0.0",
+    "@project/cms": "*",
+    "@project/ui": "*",
     "@tanstack/react-query": "^4.20.9",
     "@vercel/og": "^0.0.21",
     "clsx": "^1.2.1",
