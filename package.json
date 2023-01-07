@@ -43,6 +43,7 @@
     "@commitlint/config-conventional": "^17.4.0",
     "@commitlint/config-lerna-scopes": "^17.4.0",
     "@manypkg/cli": "^0.19.2",
+    "@project/eslint-config": "*",
     "@testing-library/react-hooks": "^8.0.1",
     "commitlint": "^17.4.0",
     "cypress": "^12.3.0",

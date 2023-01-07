@@ -4,7 +4,7 @@ on:
   - pull_request
 
 jobs:
-  cache-and-install:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +14,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -40,5 +40,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Test
+      - name: Lint
         run: pnpm lint
