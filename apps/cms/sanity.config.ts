@@ -2,12 +2,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import {
-  apiVersion,
-  previewSecretId,
-  projectId,
-  dataset,
-} from './lib/sanity.api'
+import { apiVersion, previewSecretId, projectId, dataset } from './lib/env'
 import { productionUrl } from './plugins/productionUrl'
 import { previewDocumentNode } from './plugins/previewPane'
 import { singletonPlugin, pageStructure } from './plugins/settings'

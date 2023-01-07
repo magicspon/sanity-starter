@@ -1,4 +1,4 @@
-import { resolveHref } from '@cms/lib/sanity.links'
+import { resolveHref } from '@project/cms/utils/resolveHref'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default function preview(

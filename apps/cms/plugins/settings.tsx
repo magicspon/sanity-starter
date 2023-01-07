@@ -6,7 +6,7 @@ import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
  * This plugin contains all the logic for setting up the singletons
  */
 
-import { apiVersion, previewSecretId } from '../lib/sanity.api'
+import { apiVersion, previewSecretId } from '../lib/env'
 import { type DocumentDefinition } from 'sanity'
 import { ListItem, ListItemBuilder, type StructureResolver } from 'sanity/desk'
 

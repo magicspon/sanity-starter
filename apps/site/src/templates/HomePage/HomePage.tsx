@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { usePreview } from '@cms/lib/sanity.preview'
-import { PreviewWrapper } from '@cms/components/PreviewWrapper'
-import { IndexQueryType, indexQuery } from '@cms/queries/home'
+import { usePreview } from '@project/cms/lib/usePreview'
+import { PreviewWrapper } from '@project/cms/components/PreviewWrapper'
+import { IndexQueryType, indexQuery } from '@project/cms/queries/home'
 
 export function HomePage({ page }: IndexQueryType) {
   console.log({ page })

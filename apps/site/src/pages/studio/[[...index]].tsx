@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import { NextStudio } from 'next-sanity/studio'
 import { NextStudioHead } from 'next-sanity/studio/head'
-import config from '@cms/sanity.config'
+import config from '@project/cms/sanity.config'
 
 export default function StudioPage() {
   return (

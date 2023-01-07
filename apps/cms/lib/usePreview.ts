@@ -1,4 +1,4 @@
-import { dataset, projectId } from './sanity.api'
+import { dataset, projectId } from './env'
 import { definePreview } from 'next-sanity/preview'
 
 let alerted = false

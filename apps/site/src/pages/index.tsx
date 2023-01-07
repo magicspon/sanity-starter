@@ -2,7 +2,7 @@ import * as React from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { HomePage } from '~templates/HomePage'
 import dynamic from 'next/dynamic'
-import { read, IndexQueryType } from '@cms/queries/home'
+import { read, IndexQueryType } from '@project/cms/queries/home'
 
 const HomePagePreview = dynamic(
   () => import('~templates/HomePage').then((m) => m.HomePagePreview),
