@@ -32,8 +32,8 @@ It uses [Turborepo](https://turborepo.org/) and contains:
 ```
 .github
   └─ workflows
-        └─ main ci workflow (lint/test)
-        └─ ci e2e tests
+        └─ lint
+        └─ e2e
 cypress
   └─ e2e
       ├─ e2e tests

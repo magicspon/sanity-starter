@@ -1,0 +1,25 @@
+name: Lint
+on: push
+jobs:
+  test:
+    name: Lint & typecheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      # Throw an error if the yarn.lock file doesn't match the installed dependencies (rather than updating it in-place, which it does by default locally)
+      - name: Install
+        run: pnpm install --frozen-lockfile --silent
+
+      - name: Copy example env for app
+        run: cp .env.example apps/site/.env.local && cp .env.example apps/cms/.env
+
+      - name: Lint
+        run: pnpm lint
