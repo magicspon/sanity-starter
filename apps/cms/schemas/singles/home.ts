@@ -9,15 +9,15 @@ export const home = s.document({
       type: s.string(),
     },
   ],
-  // preview: {
-  //   select: {
-  //     title: 'title',
-  //   },
-  //   prepare({ title }) {
-  //     return {
-  //       title: title as string,
-  //       // title: title ?? null
-  //     }
-  //   },
-  // },
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare({ title }) {
+      return {
+        title: title as string,
+        // title: title ?? null
+      }
+    },
+  },
 })
