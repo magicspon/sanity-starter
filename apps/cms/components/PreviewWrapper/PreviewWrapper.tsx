@@ -11,7 +11,7 @@ export function PreviewWrapper({
   return (
     <>
       <Link
-        className="underline transition hover:opacity-50 fixed top-0 left z-50"
+        className="underline opacity-0 hover:opacity-100 transition hover:opacity-50 fixed top-0 left z-50"
         href="/api/exit-preview"
       >
         Exit preview mode

@@ -24,13 +24,13 @@
     "sanity": "^3.1.4",
     "sanity-plugin-asset-source-unsplash": "^1.0.3",
     "sanity-plugin-markdown": "^3.0.1",
+    "sanity-typed-schema-builder": "^2.0.1",
     "styled-components": "^5.2"
   },
   "devDependencies": {
     "@project/eslint-config": "*",
     "@sanity/eslint-config-studio": "^2.0.1",
     "eslint": "8.31.0",
-    "prettier": "^2.8.1",
     "typescript": "^4.9.4"
   },
   "type": "module"

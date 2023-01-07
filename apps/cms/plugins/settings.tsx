@@ -50,8 +50,12 @@ export const pageStructure = (
     // Goes through all of the singletons that were provided and translates them into something the
     // Desktool can understand
     const singletonItems = typeDefArray.map((typeDef) => {
+      console.log({ typeDef })
+
       return S.listItem()
         .title(typeDef.title!)
+        .id(typeDef.name)
+        .schemaType(typeDef.type)
         .icon(typeDef.icon)
         .child(
           S.editor()
@@ -80,44 +84,44 @@ export const pageStructure = (
         )
     })
 
-    const channels: (ListItemBuilder | ListItem)[] = []
-    const structures: (ListItemBuilder | ListItem)[] = []
+    // const channels: (ListItemBuilder | ListItem)[] = []
+    // const structures: (ListItemBuilder | ListItem)[] = []
 
-    // The default root list items (except custom ones)
-    S.documentTypeListItems()
-      .filter(
-        (listItem) =>
-          !typeDefArray.find(
-            (singleton) => singleton.name === listItem.getId(),
-          ),
-      )
-      .forEach((node) => {
-        const schema = node.serialize().schemaType
+    // // The default root list items (except custom ones)
+    // S.documentTypeListItems()
+    //   .filter(
+    //     (listItem) =>
+    //       !typeDefArray.find(
+    //         (singleton) => singleton.name === listItem.getId(),
+    //       ),
+    //   )
+    //   .forEach((node) => {
+    //     const schema = node.serialize().schemaType
 
-        if (orderable.includes(schema!.name)) {
-          structures.push(
-            orderableDocumentListDeskItem({
-              type: node.getId()!,
-              title: node.getTitle(),
-              S,
-              context,
-            }),
-          )
+    //     if (orderable.includes(schema!.name)) {
+    //       structures.push(
+    //         orderableDocumentListDeskItem({
+    //           type: node.getId()!,
+    //           title: node.getTitle(),
+    //           S,
+    //           context,
+    //         }),
+    //       )
 
-          return
-        }
+    //       return
+    //     }
 
-        return channels.push(node)
-      })
+    //     return channels.push(node)
+    //   })
 
     return S.list()
       .title('Content')
       .items([
         ...singletonItems,
         S.divider(),
-        ...channels,
-        S.divider(),
-        ...structures,
+        // ...channels,
+        // S.divider(),
+        // ...structures,
       ])
   }
 }
