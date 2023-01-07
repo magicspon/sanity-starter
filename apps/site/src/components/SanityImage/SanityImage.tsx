@@ -1,4 +1,4 @@
-import { Image, FitMode, urlForImage } from '@project/cms/lib/sanity.image'
+import { Image, FitMode, urlForImage } from '@cms/lib/sanity.image'
 import * as React from 'react'
 import NextImage, { ImageProps } from 'next/image'
 
