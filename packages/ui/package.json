@@ -12,7 +12,7 @@
     "build-storybook": "build-storybook --quiet -o ./dist",
     "lint": "tsc --project tsconfig.json --noEmit --pretty && TIMING=1 eslint \"src/**/*.ts*\" --fix --quiet",
     "format": "prettier '**/*' --ignore-unknown --write",
-    "typecheck": "concurrently --raw yarn:typecheck:*"
+    "typecheck": "concurrently --raw pnpm:typecheck:*"
   },
   "jest": {
     "preset": "@project/jest-config"

@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity'
 import { s } from 'sanity-typed-schema-builder'
-import { home } from '@cms/schemas/singles'
+import { home } from '@cms/schemas/singles/home'
 import { sanityClient } from '@cms/lib/client'
 
 export const indexQuery = groq`{

@@ -3,6 +3,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { HomePage } from '~templates/HomePage'
 import dynamic from 'next/dynamic'
 import { read, IndexQueryType } from '@project/cms/queries/home'
+import { TPageProps, TPreviewData } from '~types'
 
 const HomePagePreview = dynamic(
   () => import('~templates/HomePage').then((m) => m.HomePagePreview),
@@ -21,14 +22,9 @@ export default function Index({
   return <HomePage page={page} />
 }
 
-type TPreviewData = { token: string }
-type TProps = IndexQueryType & { preview: boolean; previewData: TPreviewData }
-
-export const getServerSideProps: GetServerSideProps<TProps> = async ({
-  res,
-  preview = false,
-  previewData = {},
-}) => {
+export const getServerSideProps: GetServerSideProps<
+  TPageProps<IndexQueryType>
+> = async ({ res, preview = false, previewData = {} }) => {
   const { page } = (await read()) as IndexQueryType
 
   res.setHeader(

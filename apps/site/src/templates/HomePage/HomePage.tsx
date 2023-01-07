@@ -4,7 +4,6 @@ import { PreviewWrapper } from '@project/cms/components/PreviewWrapper'
 import { IndexQueryType, indexQuery } from '@project/cms/queries/home'
 
 export function HomePage({ page }: IndexQueryType) {
-  console.log({ page })
   return (
     <>
       <h1>{page.title}</h1>

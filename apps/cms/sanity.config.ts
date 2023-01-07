@@ -5,23 +5,33 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { apiVersion, previewSecretId, projectId, dataset } from './lib/env'
 import { productionUrl } from './plugins/productionUrl'
 import { previewDocumentNode } from './plugins/previewPane'
-import { singletonPlugin, pageStructure } from './plugins/settings'
+import { pageStructure } from './plugins/pageStructure'
+import { singletonPlugin } from './plugins/singletonPlugin'
+import { orderRankField } from '@sanity/orderable-document-list'
+// channels
+import { post } from './schemas/channels/post'
+// structures
+import { page } from './schemas/structures/page'
+// singles
+import { home } from './schemas/singles/home'
 
-import * as singles from './schemas/singles'
+export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [home, post, page].map(
+  (s) => s.schema().name,
+)
 
-export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
-  singles.home.schema().name,
-  // singles.ourTeam.name,
-  // singles.ourStory.name,
-  // channels.post.name,
-  // channels.page.name,
-  // channels.service.name,
-]
+const structures = [page].map((s) => {
+  const schema = s.schema()
+  schema.fields.push(orderRankField({ type: schema.name }))
+  return schema
+})
 
-export const ORDERABLE_DOCUMENT_TYPES: string[] = [
-  // channels.service.name,
-  // channels.person.name,
-]
+const singles = [home].map((s) => {
+  return s.schema()
+})
+
+export const ORDERABLE_DOCUMENT_TYPES: string[] = [page].map(
+  (s) => s.schema().name,
+)
 
 export default defineConfig({
   name: 'default',
@@ -33,10 +43,7 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-      structure: pageStructure(
-        [singles.home.schema()],
-        ORDERABLE_DOCUMENT_TYPES,
-      ),
+      structure: pageStructure(singles, ORDERABLE_DOCUMENT_TYPES),
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),
     visionTool(),
@@ -45,12 +52,11 @@ export default defineConfig({
       previewSecretId,
       types: PREVIEWABLE_DOCUMENT_TYPES,
     }),
-    singletonPlugin([singles.home.schema().name]),
+    singletonPlugin(singles.map((s) => s.name)),
     unsplashImageAsset(),
-    // markdownSchema(),
   ],
 
   schema: {
-    types: [singles.home.schema()],
+    types: [...singles, post.schema(), ...structures],
   },
 })
