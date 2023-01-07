@@ -6,7 +6,20 @@ import { sanityClient } from '@cms/lib/client'
 export const indexQuery = groq`{
   "page": *[_type == "home"][0] {
     title,
-    content
+    "content": content[]{
+      ...,
+      _type == "image" => @->{
+        asset,
+        title
+      },
+      markDefs[] {
+        ...,
+        _type == "internalLink" => {
+          "type": @.reference-> _type,
+          "slug": @.reference-> slug
+        }
+      }
+    }
   },
 }`
 
