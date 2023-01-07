@@ -1,6 +1,6 @@
 import type { Image } from 'sanity'
 import createImageUrlBuilder from '@sanity/image-url'
-import { dataset, projectId } from 'lib/env'
+import { dataset, projectId } from '../lib/env'
 export type { FitMode } from '@sanity/image-url/lib/types/types'
 
 const imageBuilder = createImageUrlBuilder({
