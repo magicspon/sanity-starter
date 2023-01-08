@@ -1,4 +1,4 @@
-import { defineConfig } from 'sanity'
+import { defineConfig, SchemaError } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
@@ -8,11 +8,12 @@ import { previewDocumentNode } from './plugins/previewPane'
 import { pageStructure } from './plugins/pageStructure'
 import { singletonPlugin } from './plugins/singletonPlugin'
 import { orderRankField } from '@sanity/orderable-document-list'
-// channels
+
+// channels (unsortable)
 import { post } from './schemas/channels/post'
-// structures
+// structures (sortable)
 import { page } from './schemas/structures/page'
-// singles
+// singles (one offs)
 import { home } from './schemas/singles/home'
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [home, post, page].map(
@@ -26,6 +27,9 @@ const structures = [page].map((s) => {
 })
 
 const singles = [home].map((s) => {
+  return s.schema()
+})
+const channels = [post].map((s) => {
   return s.schema()
 })
 
@@ -57,6 +61,6 @@ export default defineConfig({
   ],
 
   schema: {
-    types: [...singles, post.schema(), ...structures],
+    types: [...singles, ...channels, ...structures],
   },
 })

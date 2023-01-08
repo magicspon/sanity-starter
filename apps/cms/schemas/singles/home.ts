@@ -1,4 +1,5 @@
 import { s } from 'sanity-typed-schema-builder'
+import { block } from '../fields/block'
 
 export const home = s.document({
   name: 'home',
@@ -7,6 +8,10 @@ export const home = s.document({
     {
       name: 'title',
       type: s.string(),
+    },
+    {
+      name: 'content',
+      type: block,
     },
   ],
   preview: {
