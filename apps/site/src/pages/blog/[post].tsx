@@ -27,19 +27,15 @@ export const getServerSideProps: GetServerSideProps<
 > = async ({ res, preview = false, previewData = {}, params }) => {
   const slug = params?.page as string
 
-  if (!slug) {
-    return { notFound: true }
-  }
+  if (!slug) return { notFound: true }
 
   const { page } = (await readPost({ slug })) as PostQueryType
 
-  if (!page) {
-    return { notFound: true }
-  }
+  if (!page) return { notFound: true }
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=120, stale-while-revalidate=59',
+    'public, s-maxage=86400, stale-while-revalidate=59',
   )
 
   return {
