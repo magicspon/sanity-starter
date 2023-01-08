@@ -13,7 +13,6 @@ export function HomePage({ page }: IndexQueryType) {
 
 export function HomePagePreview({ token }: { token: string }) {
   const { page }: IndexQueryType = usePreview(token, indexQuery)
-
   return (
     <PreviewWrapper>
       <HomePage page={page} />

@@ -17,7 +17,7 @@
     "dev": "turbo dev --parallel",
     "start": "turbo run start --filter=@project/site",
     "start:ci": "INSECURE_AUTH=true pnpm start",
-    "build": "turbo build --filter=@project/site",
+    "build": "turbo run build --filter=@project/site",
     "deploy": "turbo deploy",
     "deploy-graphql": "turbo deploy-graphql",
     "new:component": "hygen component with-prompt",
